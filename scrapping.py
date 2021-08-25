@@ -16,10 +16,6 @@ os.environ['DJANGO_SETTINGS_MODULE'] = 'iFreelancer.settings'
 import django
 django.setup()
 
-from jobs.models import Job
-
-
-
 
 headers = [
     {'User-Agent': 'Mozilla/5.0 (Windows NT 5.1; rv:47.0) Gecko/20100101 Firefox/47.0',
@@ -54,14 +50,14 @@ def habr_parsing():
                         'views': views, 'responses': responses, 'time': time})
     return jobs
 
-def save_jobs():
-    habr_jobs = habr_parsing()
-    for job in habr_jobs:
-        j = Job(**job)
-        try:
-            j.save()
-        except DatabaseError:
-            pass
+# def save_jobs():
+#     habr_jobs = habr_parsing()
+#     for job in habr_jobs:
+#         j = Job(**job)
+#         try:
+#             j.save()
+#         except DatabaseError:
+#             pass
 
 if __name__ == '__main__':
-    save_jobs()
+    habr_parsing()
