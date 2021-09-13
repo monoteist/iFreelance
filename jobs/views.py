@@ -10,7 +10,7 @@ from .serializers import FollowersSerializer
 
 class HomePageView(View):
     def get(self, request):
-        jobs = habr_parsing('https://freelance.habr.com/tasks?q=python&categories=development_all_inclusive,development_backend,development_frontend,development_prototyping,development_ios,development_android,development_desktop,development_bots,development_games,development_1c_dev,development_scripts,development_voice_interfaces,development_other')
+        jobs = habr_parsing('python')
         return render(request, 'index.html', {'jobs': jobs})
 
     def post(self, request):
@@ -25,7 +25,7 @@ class HomePageView(View):
 
 
 def jobs(request):
-    jobs = habr_parsing('https://freelance.habr.com/tasks?q=python&categories=development_all_inclusive,development_backend,development_frontend,development_prototyping,development_ios,development_android,development_desktop,development_bots,development_games,development_1c_dev,development_scripts,development_voice_interfaces,development_other')
+    jobs = habr_parsing('python')
     return JsonResponse({'jobs': jobs})
 
 class FollowerListView(generics.ListAPIView):
