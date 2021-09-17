@@ -17,9 +17,8 @@
             <input type="email" placeholder="Введите ваш email!" name='email'>
             <button>Подписаться</button>
         </form>
-        <form action="" method="POST">
-            {% csrf_token %}
-            <input type="text" value="Поиск заказов" name='q'>
+        <form>
+            <input type="text" placeholder="Поиск заказов" name='q'>
             <button>Поиск</button>
         </form>
         {% for job in jobs %}

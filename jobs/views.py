@@ -10,7 +10,13 @@ from .serializers import FollowersSerializer
 
 class HomePageView(View):
     def get(self, request):
-        jobs = habr_parsing('python')
+        q = request.GET.get('q')
+        print(q)
+        if q:
+            jobs = habr_parsing(q)
+        else:
+            jobs = habr_parsing('python')
+        print(jobs)
         return render(request, 'index.html', {'jobs': jobs})
 
     def post(self, request):
